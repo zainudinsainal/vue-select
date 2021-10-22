@@ -1,5 +1,5 @@
-<style lang="scss">
-@import '../scss/vue-select.scss';
+<style>
+@import '../css/vue-select.css';
 </style>
 
 <template>
