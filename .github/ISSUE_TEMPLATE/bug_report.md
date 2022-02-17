@@ -6,8 +6,6 @@ labels: 'bug'
 assignees: ''
 ---
 
-## Required Information
-
 > Please respect maintainers time by filling in these sections. Your issue will likely be closed without this information.
 
 - Vue Version: 
@@ -16,12 +14,11 @@ assignees: ''
 **Describe the bug**
 A clear and concise description of what the bug is.
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+**Reproduction Link**
+A link to a reproduction of the bug. This is a huge help.
+
+**Steps To Reproduce**
+Outline the steps to reproduce the bug.
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
