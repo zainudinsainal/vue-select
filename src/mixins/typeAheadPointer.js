@@ -67,7 +67,7 @@ export default {
     typeAheadSelect() {
       const typeAheadOption = this.filteredOptions[this.typeAheadPointer]
 
-      if (typeAheadOption) {
+      if (typeAheadOption && this.selectable(typeAheadOption)) {
         this.select(typeAheadOption)
       }
     },
