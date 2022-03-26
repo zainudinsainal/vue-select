@@ -44,4 +44,37 @@ describe('Moving the Typeahead Pointer', () => {
     Select.vm.typeAheadDown()
     expect(Select.vm.typeAheadPointer).toEqual(2)
   })
+
+  it('will set the pointer to the selected option when opening', async () => {
+    const Select = shallowMount(VueSelect, {
+      propsData: {
+        modelValue: 'three',
+        options: ['one', 'two', 'three'],
+      },
+    })
+
+    Select.get('input').trigger('focus')
+    await Select.vm.$nextTick()
+
+    expect(Select.vm.typeAheadPointer).toEqual(2)
+  })
+
+  it('will set the pointer to the reduced selected option when opening', async () => {
+    const Select = shallowMount(VueSelect, {
+      propsData: {
+        modelValue: 3,
+        reduce: ({ value }) => value,
+        options: [
+          { label: 'one', value: 1 },
+          { label: 'two', value: 2 },
+          { label: 'three', value: 3 },
+        ],
+      },
+    })
+
+    Select.get('input').trigger('focus')
+    await Select.vm.$nextTick()
+
+    expect(Select.vm.typeAheadPointer).toEqual(2)
+  })
 })

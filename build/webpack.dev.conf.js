@@ -1,37 +1,21 @@
-const merge = require('webpack-merge')
-const chokidar = require('chokidar')
+const { merge } = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const baseWebpackConfig = require('./webpack.base.conf')
 
-/**
- *
- */
 module.exports = merge(baseWebpackConfig, {
   entry: './dev/dev.js',
+  devServer: {
+    open: true,
+    static: false,
+    client: { overlay: true },
+    watchFiles: ['dev/dev.html'],
+  },
+  stats: false,
   plugins: [
     new HtmlWebpackPlugin({
+      title: 'dev',
       template: './dev/dev.html',
       inject: true,
     }),
   ],
-  optimization: {
-    noEmitOnErrors: true,
-  },
-  devServer: {
-    hot: true,
-    hotOnly: true,
-    open: true,
-    inline: true,
-    stats: {
-      children: false,
-      modules: false,
-      chunks: false,
-    },
-    port: 8080,
-    before(app, server) {
-      chokidar.watch(['./**/*.html']).on('all', function () {
-        server.sockWrite(server.sockets, 'content-changed')
-      })
-    },
-  },
 })

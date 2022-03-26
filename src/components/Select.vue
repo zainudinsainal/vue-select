@@ -1,5 +1,5 @@
-<style lang="scss">
-@import '../scss/vue-select.scss';
+<style>
+@import '../css/vue-select.css';
 </style>
 
 <template>
@@ -33,8 +33,7 @@
             </slot>
             <button
               v-if="multiple"
-              ref="deselectButtons"
-              :ref="el => deselectButtons[i] = el"
+              :ref="(el) => (deselectButtons[i] = el)"
               :disabled="disabled"
               type="button"
               class="vs__deselect"
@@ -119,9 +118,9 @@
           </slot>
         </li>
         <li v-if="filteredOptions.length === 0" class="vs__no-options">
-          <slot name="no-options" v-bind="scope.noOptions"
-            >Sorry, no matching options.</slot
-          >
+          <slot name="no-options" v-bind="scope.noOptions">
+            Sorry, no matching options.
+          </slot>
         </li>
         <slot name="list-footer" v-bind="scope.listFooter" />
       </ul>
@@ -694,7 +693,7 @@ export default {
       pushedTags: [],
       // eslint-disable-next-line vue/no-reserved-keys
       _value: [], // Internal value managed by Vue Select if no `value` prop is passed
-      deselectButtons: []
+      deselectButtons: [],
     }
   },
 
@@ -723,7 +722,7 @@ export default {
         value = this.$data._value
       }
 
-      if (value) {
+      if (value !== undefined && value !== null) {
         return [].concat(value)
       }
 
