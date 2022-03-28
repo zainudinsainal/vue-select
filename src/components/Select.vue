@@ -132,6 +132,8 @@
       ></ul>
     </transition>
     <slot name="footer" v-bind="scope.footer" />
+    <span v-if="!!hint && !!!errors">{{ hint }}</span>
+    <span v-if="errors">{{ errors }}</span>
   </div>
 </template>
 
@@ -243,6 +245,22 @@ export default {
     placeholder: {
       type: String,
       default: '',
+    },
+
+    /**
+     * Helper (hint) text which gets placed below your select input.
+     * @type {String}
+     */
+    hint: {
+      type: String
+    },
+
+    /**
+     * Helper (errors) text which gets placed below your select input.
+     * @type {String}
+     */
+    errors: {
+      type: String
     },
 
     /**
@@ -1160,7 +1178,7 @@ export default {
       return (
         matches.find((match) =>
           this.optionComparator(match, this.$data._value)
-        ) || value
+        ) || null
       )
     },
 
