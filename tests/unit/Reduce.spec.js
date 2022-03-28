@@ -1,5 +1,6 @@
+import { it, describe, expect } from 'vitest'
 import { mount, shallowMount } from '@vue/test-utils'
-import VueSelect from '../../src/components/Select'
+import VueSelect from '../../src/components/Select.vue'
 import { mountDefault } from '../helpers.js'
 
 describe('When reduce prop is defined', () => {

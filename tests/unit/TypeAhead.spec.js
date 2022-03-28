@@ -1,8 +1,7 @@
+import { it, describe, expect } from 'vitest'
 import { shallowMount } from '@vue/test-utils'
-import VueSelect from '../../src/components/Select'
-import { mountDefault, mountWithoutTestUtils } from '../helpers'
-import typeAheadMixin from '../../src/mixins/typeAheadPointer'
-import Vue from 'vue'
+import VueSelect from '../../src/components/Select.vue'
+import { mountDefault } from '../helpers.js'
 
 describe('Moving the Typeahead Pointer', () => {
   it('should set the pointer to zero when the filteredOptions watcher is called', async () => {

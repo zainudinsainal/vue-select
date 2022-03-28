@@ -1,5 +1,6 @@
+import { it, test, describe, expect, vi } from 'vitest'
 import { h } from 'vue'
-import { mountDefault } from '../helpers'
+import { mountDefault } from '../helpers.js'
 
 describe('Scoped Slots', () => {
   it('receives an option object to the selected-option-container slot', () => {
@@ -68,7 +69,7 @@ describe('Scoped Slots', () => {
   })
 
   it('noOptions slot receives the current search text', async () => {
-    const noOptions = jest.fn()
+    const noOptions = vi.fn()
     const Select = mountDefault(
       {},
       {
@@ -88,7 +89,7 @@ describe('Scoped Slots', () => {
   })
 
   test('header slot props', async () => {
-    const header = jest.fn()
+    const header = vi.fn()
     const Select = mountDefault(
       {},
       {
@@ -106,7 +107,7 @@ describe('Scoped Slots', () => {
   })
 
   test('footer slot props', async () => {
-    const footer = jest.fn()
+    const footer = vi.fn()
     const Select = mountDefault(
       {},
       {
@@ -124,7 +125,7 @@ describe('Scoped Slots', () => {
   })
 
   test('list-header slot props', async () => {
-    const header = jest.fn()
+    const header = vi.fn()
     const Select = mountDefault(
       {},
       {
@@ -142,7 +143,7 @@ describe('Scoped Slots', () => {
   })
 
   test('list-footer slot props', async () => {
-    const footer = jest.fn()
+    const footer = vi.fn()
     const Select = mountDefault(
       {},
       {

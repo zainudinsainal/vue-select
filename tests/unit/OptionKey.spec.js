@@ -1,3 +1,4 @@
+import { it, describe, expect } from 'vitest'
 import Select from '../../src/components/Select.vue'
 
 describe('Serializing Option Keys', () => {

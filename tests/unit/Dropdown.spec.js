@@ -1,8 +1,9 @@
-import { selectWithProps } from '../helpers'
-import OpenIndicator from '../../src/components/OpenIndicator'
-import VueSelect from '../../src/components/Select'
+import { it, describe, expect, vi, afterEach } from 'vitest'
+import { selectWithProps } from '../helpers.js'
+import OpenIndicator from '../../src/components/OpenIndicator.vue'
+import VueSelect from '../../src/components/Select.vue'
 
-const preventDefault = jest.fn()
+const preventDefault = vi.fn()
 
 function clickEvent(currentTarget) {
   return { currentTarget, preventDefault }
@@ -30,19 +31,6 @@ describe('Toggling Dropdown', () => {
     expect(Select.vm.open).toEqual(true)
   })
 
-  it('should not close the dropdown when the el is clicked and enableMouseInputSearch is set to true', () => {
-    const Select = selectWithProps({
-      modelValue: [{ label: 'one' }],
-      options: [{ label: 'one' }],
-      enableMouseSearchInput: true,
-    })
-
-    Select.vm.toggleDropdown(clickEvent(Select.vm.$refs.search))
-    expect(Select.vm.open).toEqual(true)
-    Select.vm.toggleDropdown(clickEvent(Select.vm.$el))
-    expect(Select.vm.open).toEqual(false)
-  })
-
   it('should open the dropdown when the selected tag is clicked', () => {
     const Select = selectWithProps({
       modelValue: [{ label: 'one' }],
@@ -57,7 +45,7 @@ describe('Toggling Dropdown', () => {
 
   it('can close the dropdown when the el is clicked', () => {
     const Select = selectWithProps()
-    const spy = jest.spyOn(Select.vm.$refs.search, 'blur')
+    const spy = vi.spyOn(Select.vm.$refs.search, 'blur')
 
     Select.vm.open = true
     Select.vm.toggleDropdown(clickEvent(Select.vm.$el))
@@ -104,7 +92,7 @@ describe('Toggling Dropdown', () => {
   })
 
   it('will close the dropdown and emit the search:blur event from onSearchBlur', () => {
-    spy = jest.spyOn(VueSelect.methods, 'onSearchBlur')
+    spy = vi.spyOn(VueSelect.methods, 'onSearchBlur')
     const Select = selectWithProps()
 
     Select.vm.open = true
@@ -115,7 +103,7 @@ describe('Toggling Dropdown', () => {
   })
 
   it('will open the dropdown and emit the search:focus event from onSearchFocus', () => {
-    spy = jest.spyOn(VueSelect.methods, 'onSearchFocus')
+    spy = vi.spyOn(VueSelect.methods, 'onSearchFocus')
     const Select = selectWithProps()
 
     Select.vm.onSearchFocus()
@@ -126,7 +114,7 @@ describe('Toggling Dropdown', () => {
 
   it('will close the dropdown on escape, if search is empty', () => {
     const Select = selectWithProps()
-    const spy = jest.spyOn(Select.vm.$refs.search, 'blur')
+    const spy = vi.spyOn(Select.vm.$refs.search, 'blur')
 
     Select.vm.open = true
     Select.vm.onEscape()

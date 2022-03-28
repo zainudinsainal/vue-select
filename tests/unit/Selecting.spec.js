@@ -1,7 +1,8 @@
+import { it, describe, expect, vi, beforeEach, afterEach } from 'vitest'
 import { mount, shallowMount } from '@vue/test-utils'
 import VueSelect from '../../src/components/Select.vue'
-import typeAheadPointer from '../../src/mixins/typeAheadPointer'
-import { mountDefault } from '../helpers'
+import typeAheadPointer from '../../src/mixins/typeAheadPointer.js'
+import { mountDefault } from '../helpers.js'
 
 describe('VS - Selecting Values', () => {
   let defaultProps
@@ -57,7 +58,7 @@ describe('VS - Selecting Values', () => {
   })
 
   it('can select an option on tab', () => {
-    spy = jest.spyOn(typeAheadPointer.methods, 'typeAheadSelect')
+    spy = vi.spyOn(typeAheadPointer.methods, 'typeAheadSelect')
     const Select = shallowMount(VueSelect, {
       props: {
         selectOnTab: true,
@@ -218,7 +219,7 @@ describe('VS - Selecting Values', () => {
     expect(Select.vm.selectedValue).toEqual(options)
   })
 
-  fit('can select a false boolean option', async () => {
+  it('can select a false boolean option', async () => {
     const Select = mountDefault({
       options: [false],
     })

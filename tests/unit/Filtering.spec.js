@@ -1,5 +1,6 @@
+import { it, describe, expect } from 'vitest'
 import { shallowMount } from '@vue/test-utils'
-import VueSelect from '../../src/components/Select'
+import VueSelect from '../../src/components/Select.vue'
 
 describe('Filtering Options', () => {
   it("should update the search value when the input element receives the 'input' event", () => {

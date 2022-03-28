@@ -1,6 +1,7 @@
-import VueSelect from '../../src/components/Select'
+import { it, describe, expect, vi } from 'vitest'
 import { shallowMount } from '@vue/test-utils'
-import { selectWithProps } from '../helpers'
+import VueSelect from '../../src/components/Select.vue'
+import { selectWithProps } from '../helpers.js'
 
 describe('Labels', () => {
   it('can generate labels using a custom label key', () => {
@@ -13,7 +14,7 @@ describe('Labels', () => {
   })
 
   it('will console.warn when options contain objects without a valid label key', async () => {
-    const spy = jest.spyOn(console, 'warn').mockImplementation(() => {})
+    const spy = vi.spyOn(console, 'warn').mockImplementation(() => {})
     const Select = selectWithProps({
       options: [{}],
     })
@@ -63,23 +64,23 @@ describe('Labels', () => {
      * @see https://github.com/vuejs/vue/issues/10224
      * @see https://github.com/vuejs/vue/pull/10229
      */
-    xit('will not call getOptionLabel if both scoped option slots are used and a filter is provided', () => {
-      const spy = spyOn(VueSelect.props.getOptionLabel, 'default')
-      const Select = shallowMount(VueSelect, {
-        props: {
-          options: [{ name: 'one' }],
-          filter: () => {},
-        },
-        scopedSlots: {
-          option: '<span class="option">{{ props.name }}</span>',
-          'selected-option': '<span class="selected">{{ props.name }}</span>',
-        },
-      })
-
-      Select.vm.select({ name: 'one' })
-
-      expect(spy).toHaveBeenCalledTimes(0)
-      expect(Select.find('.selected').exists()).toBeTruthy()
-    })
+    // it('will not call getOptionLabel if both scoped option slots are used and a filter is provided', () => {
+    //   const spy = spyOn(VueSelect.props.getOptionLabel, 'default')
+    //   const Select = shallowMount(VueSelect, {
+    //     props: {
+    //       options: [{ name: 'one' }],
+    //       filter: () => {},
+    //     },
+    //     scopedSlots: {
+    //       option: '<span class="option">{{ props.name }}</span>',
+    //       'selected-option': '<span class="selected">{{ props.name }}</span>',
+    //     },
+    //   })
+    //
+    //   Select.vm.select({ name: 'one' })
+    //
+    //   expect(spy).toHaveBeenCalledTimes(0)
+    //   expect(Select.find('.selected').exists()).toBeTruthy()
+    // })
   })
 })

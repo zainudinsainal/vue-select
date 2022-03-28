@@ -1,4 +1,5 @@
-import { selectTag, selectWithProps } from '../helpers'
+import { it, describe, expect } from 'vitest'
+import { selectTag, selectWithProps } from '../helpers.js'
 
 describe('CreateOption When Tagging Is Enabled', () => {
   it('can select the current search text as a string', async () => {

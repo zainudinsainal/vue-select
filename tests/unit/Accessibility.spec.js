@@ -1,10 +1,11 @@
-import { mountDefault } from '../helpers'
+import { it, describe, expect } from 'vitest'
+import { mountDefault } from '../helpers.js'
 
 describe('Search Slot Scope', () => {
   /**
    * @see https://www.w3.org/WAI/PF/aria/states_and_properties#aria-activedescendant
    */
-  fdescribe('aria-activedescendant', () => {
+  describe('aria-activedescendant', () => {
     it('adds the active descendant attribute only when the dropdown is open and there is a typeAheadPointer value', async () => {
       const Select = mountDefault()
 

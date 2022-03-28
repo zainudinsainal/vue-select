@@ -1,4 +1,5 @@
-import { searchSubmit, selectWithProps } from '../helpers'
+import { it, describe, expect } from 'vitest'
+import { searchSubmit, selectWithProps } from '../helpers.js'
 
 describe('Selectable prop', () => {
   it('should select selectable option if clicked', async () => {

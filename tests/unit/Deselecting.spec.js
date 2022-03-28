@@ -1,4 +1,5 @@
-import { mountDefault, selectWithProps } from '../helpers'
+import { it, describe, expect, vi } from 'vitest'
+import { mountDefault, selectWithProps } from '../helpers.js'
 
 describe('Removing values', () => {
   it('can remove the given tag when its close icon is clicked', async () => {
@@ -65,7 +66,7 @@ describe('Removing values', () => {
       options: ['one', 'two', 'three'],
       deselectFromDropdown: true,
     })
-    const deselect = spyOn(Select.vm, 'deselect')
+    const deselect = vi.spyOn(Select.vm, 'deselect')
 
     Select.vm.open = true
     await Select.vm.$nextTick()
@@ -83,7 +84,7 @@ describe('Removing values', () => {
       clearable: false,
       deselectFromDropdown: true,
     })
-    const deselect = spyOn(Select.vm, 'deselect')
+    const deselect = vi.spyOn(Select.vm, 'deselect')
 
     Select.vm.open = true
     await Select.vm.$nextTick()
@@ -100,7 +101,7 @@ describe('Removing values', () => {
       options: ['one', 'two', 'three'],
       deselectFromDropdown: false,
     })
-    const deselect = spyOn(Select.vm, 'deselect')
+    const deselect = vi.spyOn(Select.vm, 'deselect')
 
     Select.vm.open = true
     await Select.vm.$nextTick()

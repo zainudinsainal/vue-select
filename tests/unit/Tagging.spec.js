@@ -1,10 +1,11 @@
+import { it, describe, expect, vi } from 'vitest'
 import {
   mountDefault,
   searchSubmit,
   selectTag,
   selectWithProps,
-} from '../helpers'
-import VueSelect from '../../src/components/Select'
+} from '../helpers.js'
+import VueSelect from '../../src/components/Select.vue'
 
 describe('When Tagging Is Enabled', () => {
   it('can determine if a given option string already exists', () => {
@@ -222,7 +223,7 @@ describe('When Tagging Is Enabled', () => {
   })
 
   it('should not allow duplicate tags when using object options', async () => {
-    const spy = jest.spyOn(VueSelect.methods, 'select')
+    const spy = vi.spyOn(VueSelect.methods, 'select')
     const Select = selectWithProps({
       taggable: true,
       multiple: true,

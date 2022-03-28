@@ -1,3 +1,4 @@
+import { test, expect } from 'vitest'
 import uniqueId from '../../../src/utility/uniqueId'
 
 test('it generates a unique number', () => {
